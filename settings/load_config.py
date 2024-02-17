@@ -26,3 +26,7 @@ def create_config():
     data = {'auth': auth}
     with open('config.json', 'w') as config:
         json.dump(data, config)
+
+
+if __name__ == '__main__':
+    print("Closing")

@@ -31,6 +31,7 @@ What do you want to do today?""")
                 os.system("py ./settings/account_settings.py")
             case "2":
                 os.system('cls' if os.name == "nt" else 'clear')
+                os.system("py ./settings/server_settings.py")
             case _:
                 input("Invalid Input, press enter to retry")
                 os.system('cls' if os.name == "nt" else 'clear')
