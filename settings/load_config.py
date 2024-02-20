@@ -1,7 +1,15 @@
 import json
 import os
 
+def log_function(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__} with args: {args}, kwargs: {kwargs}")
+        result = func(*args, **kwargs)
+        print(f"{func.__name__} returned: {result}")
+        return result
+    return wrapper
 
+@log_function
 def load():
     if not os.path.exists('config.json'):
         print("Config file not found. Creating...")
@@ -20,7 +28,7 @@ def load():
         os.remove('config.json')
         create_config()
 
-
+@log_function
 def create_config():
     auth = input("Config file created. Please provide authorization.")
     data = {'auth': auth}
