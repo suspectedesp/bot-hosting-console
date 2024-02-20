@@ -5,10 +5,13 @@ urls = [
 ]
 try:
     import requests
-    from load_config import load
+    import load_config as config
 
-    auth = load()
-    os.system('cls' if os.name == 'nt' else 'clear')
+    auth = config.load('auth')
+    clear = config.load('clear')
+    print(f"{auth}")
+    if clear == "True":
+        os.system('cls' if os.name == 'nt' else 'clear')
     print("Successfully Loaded data from config.json")
     print("Successfully imported requests")
 except ModuleNotFoundError as e:

@@ -24,6 +24,7 @@ def menu():
         print("""
 1. Account Settings
 2. Server Settings
+3. Actualise config.json
 What do you want to do today?""")
         match input("[>]"):
             case "1":
@@ -32,6 +33,9 @@ What do you want to do today?""")
             case "2":
                 os.system('cls' if os.name == "nt" else 'clear')
                 os.system("py ./settings/server_settings.py")
+            case "3":
+                os.system('cls' if os.name == "nt" else 'clear')
+                os.system("py ./settings/load_config.py")
             case _:
                 input("Invalid Input, press enter to retry")
                 os.system('cls' if os.name == "nt" else 'clear')
