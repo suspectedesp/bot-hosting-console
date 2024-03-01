@@ -1,5 +1,7 @@
 import os
 import subprocess
+from settings.load_config import create_config
+
 
 try:
     import colorama
@@ -35,7 +37,8 @@ What do you want to do today?""")
                 os.system("py ./settings/server_settings.py")
             case "3":
                 os.system('cls' if os.name == "nt" else 'clear')
-                os.system("py ./settings/load_config.py")
+                create_config()
+                menu()
             case _:
                 input("Invalid Input, press enter to retry")
                 os.system('cls' if os.name == "nt" else 'clear')

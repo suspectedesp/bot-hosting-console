@@ -1,6 +1,7 @@
 import json
 import os
 
+
 def log_function(func):
     def wrapper(*args, **kwargs):
         print(f"Calling {func.__name__} with args: {args}, kwargs: {kwargs}")
@@ -13,6 +14,7 @@ def log_function(func):
         print(f"{func.__name__} returned: {result}")
         return result
     return wrapper
+
 
 @log_function
 def load(str):
@@ -39,6 +41,7 @@ def load(str):
         os.remove('config.json')
         create_config()
 
+
 @log_function
 def create_config():
     if os.path.exists('config.json'):
@@ -59,6 +62,7 @@ def create_config():
     data = {'clear': clear, 'auth': auth, 'censor': censor}
     with open('config.json', 'w') as config:
         json.dump(data, config)
+
 
 if __name__ == '__main__':
     print("Closing")
