@@ -4,10 +4,14 @@ import subprocess
 try:
     import colorama
     from colorama import Fore
+    from settings.load_config import create_config
     colorama.init(convert=True)
+    
 except ModuleNotFoundError as module_not_found:
     module_name = str(module_not_found).split("'")[1]
     os.system(f"pip install {module_name}")
+    os.system("cls" if os.name=="nt" else "clear")
+    os.system("python main.py")
 
 
 def menu():
@@ -30,16 +34,20 @@ What do you want to do today?""")
             case "1":
                 os.system('cls' if os.name == "nt" else 'clear')
                 os.system("py ./settings/account_settings.py")
+                
             case "2":
                 os.system('cls' if os.name == "nt" else 'clear')
                 os.system("py ./settings/server_settings.py")
+                
             case "3":
                 os.system('cls' if os.name == "nt" else 'clear')
-                os.system("py ./settings/load_config.py")
+                create_config("menu")
+                
             case _:
                 input("Invalid Input, press enter to retry")
                 os.system('cls' if os.name == "nt" else 'clear')
                 menu()
+                
     except subprocess.CalledProcessError as process_error:
         print(f"Failed to fetch username, error: {process_error}")
         input("Press enter to close")

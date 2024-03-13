@@ -4,19 +4,21 @@ urls = [
     'https://bot-hosting.net/api/me'
 ]
 try:
-    import requests
     import load_config as config
-
     auth = config.load('auth')
     clear = config.load('clear')
+    
+    import requests
     print(f"{auth}")
     if clear == "True":
         os.system('cls' if os.name == 'nt' else 'clear')
     print("Successfully Loaded data from config.json")
     print("Successfully imported requests")
+    
 except ModuleNotFoundError as e:
     module_name = str(e).split("'")[1]
     os.system(f"pip install {module_name}")
+    os.system("python settings.account_settings.py")
 
 
 def account(auth):
@@ -40,6 +42,7 @@ What do you want to do?""")
                 coins = re.get('coins')
                 print(f"Your ID: {user_id}")
                 print(f"Your Coins Amount: {coins}")
+                
         case _:
             os.system('cls' if os.name == "nt" else 'clear')
             print("Invalid Input, Please Try again.")
@@ -47,6 +50,7 @@ What do you want to do?""")
 
 
 account(auth=auth)
+
 
 if __name__ == "__main__":
     print("Closing")

@@ -14,12 +14,14 @@ def log_function(func):
         return result
     return wrapper
 
+
 @log_function
 def load(str):
     if not os.path.exists('config.json'):
         print("Config file not found. Creating...")
         create_config()
-        return None  # Returning None if config file doesn't exist
+        return None  #  None if config != exist
+    
     try:
         with open('config.json') as config:
             data = json.load(config)
@@ -34,13 +36,15 @@ def load(str):
                     return auth
                 elif str == "clear":
                     return clear
+                
     except json.decoder.JSONDecodeError:
         print("Error: Invalid JSON format in config.json. Deleting and recreating the file...")
         os.remove('config.json')
         create_config()
 
+
 @log_function
-def create_config():
+def create_config(str):
     if os.path.exists('config.json'):
         os.remove('config.json')
     auth = input("Config file created. Please provide authorization: ")
@@ -59,6 +63,9 @@ def create_config():
     data = {'clear': clear, 'auth': auth, 'censor': censor}
     with open('config.json', 'w') as config:
         json.dump(data, config)
-
+    if str == "menu":
+        os.system("py main.py")
+        
+        
 if __name__ == '__main__':
     print("Closing")
