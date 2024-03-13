@@ -1,6 +1,7 @@
 import json
 import os
 
+
 def log_function(func):
     def wrapper(*args, **kwargs):
         print(f"Calling {func.__name__} with args: {args}, kwargs: {kwargs}")

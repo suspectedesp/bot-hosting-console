@@ -3,6 +3,7 @@ import os
 url = [
     'https://bot-hosting.net/api/servers'
 ]
+
 try:
     from load_config import load
     auth = load()

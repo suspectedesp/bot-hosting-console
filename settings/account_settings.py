@@ -3,6 +3,7 @@ import os
 urls = [
     'https://bot-hosting.net/api/me'
 ]
+
 try:
     import load_config as config
     auth = config.load('auth')
