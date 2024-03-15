@@ -3,7 +3,10 @@ import os
 urls = [
     'https://bot-hosting.net/api/me'
 ]
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 try:
     import load_config as config
     auth = config.load('auth')

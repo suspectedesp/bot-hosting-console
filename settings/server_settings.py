@@ -1,9 +1,13 @@
 import os
 
 url = [
-    'https://bot-hosting.net/api/servers'
+    'https://bot-hosting.net/api/servers',
+    'https://bot-hosting.net/api/manageservers'
 ]
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 try:
     from load_config import load
     auth = load()
@@ -20,20 +24,38 @@ except ModuleNotFoundError as e:
     else:
         os.system(f"pip install {module_name}")
     os.system("python settings.server_settings.py")
+<<<<<<< Updated upstream
 
+=======
+    
+>>>>>>> Stashed changes
 
 def server(auth):
+    headers = {"Authorization": f"{auth}"}
     print("""
 1. Get Genuine Server Information
+2. Manage a certain Server
 What do you want to do?""")
     match input("[>]"):
         case "1":
-            headers = {"Authorization": f"{auth}"}
             response = requests.get(url[0], headers=headers)
             if response.status_code == 200:
                 print("Successfully visited /api/servers")
                 re = response.json()
                 print(re)
+<<<<<<< Updated upstream
+=======
+            else:
+                print(f"Error: {response.status_code}")
+                print("Response:")
+                print(response.text)
+        
+        case '2':
+            response = requests.get(url[1], headers=headers)
+            if response.status_code == 200:
+                print("Successfully visited /api/manageservers")
+                
+>>>>>>> Stashed changes
                 
         case _:
             os.system('cls' if os.name == "nt" else 'clear')
