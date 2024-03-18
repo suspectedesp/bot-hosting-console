@@ -57,3 +57,5 @@ What do you want to do today?""")
 
 if __name__ == "__main__":
     menu()
+else:
+    input(__name__, " cannot be imported into another file, it must be run directly or via bash/batch")
