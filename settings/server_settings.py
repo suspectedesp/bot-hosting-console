@@ -4,13 +4,11 @@ url = [
     'https://bot-hosting.net/api/servers',
     'https://bot-hosting.net/api/manageservers'
 ]
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
+
 try:
     from load_config import load
-    auth = load()
+    auth = load(str="auth")
     
     import requests
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -23,12 +21,9 @@ except ModuleNotFoundError as e:
         input(f"Make sure you did not delete any files, for example {module_name}")
     else:
         os.system(f"pip install {module_name}")
-    os.system("python settings.server_settings.py")
-<<<<<<< Updated upstream
+    os.system("python settings.server_settings.py" if os.name=="nt"
+              else "python3 settings.server_settings.py")
 
-=======
-    
->>>>>>> Stashed changes
 
 def server(auth):
     headers = {"Authorization": f"{auth}"}
@@ -37,25 +32,13 @@ def server(auth):
 2. Manage a certain Server
 What do you want to do?""")
     match input("[>]"):
+
         case "1":
             response = requests.get(url[0], headers=headers)
             if response.status_code == 200:
                 print("Successfully visited /api/servers")
                 re = response.json()
                 print(re)
-<<<<<<< Updated upstream
-=======
-            else:
-                print(f"Error: {response.status_code}")
-                print("Response:")
-                print(response.text)
-        
-        case '2':
-            response = requests.get(url[1], headers=headers)
-            if response.status_code == 200:
-                print("Successfully visited /api/manageservers")
-                
->>>>>>> Stashed changes
                 
         case _:
             os.system('cls' if os.name == "nt" else 'clear')

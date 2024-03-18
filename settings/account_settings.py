@@ -3,14 +3,11 @@ import os
 urls = [
     'https://bot-hosting.net/api/me'
 ]
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 try:
     import load_config as config
-    auth = config.load('auth')
-    clear = config.load('clear')
+    auth = config.load(str="auth")
+    clear = config.load(str="clear")
     
     import requests
     print(f"{auth}")
@@ -22,7 +19,8 @@ try:
 except ModuleNotFoundError as e:
     module_name = str(e).split("'")[1]
     os.system(f"pip install {module_name}")
-    os.system("python settings.account_settings.py")
+    os.system("python settings.account_settings.py" if os.name=="nt"
+              else "python3 settings.account_settings.py")
 
 
 def account(auth):

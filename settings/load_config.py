@@ -45,7 +45,9 @@ def load(str):
 
 
 @log_function
-def create_config(str):
+def create_config(str = None):
+    if str == None:
+        str = "Not provided"
     if os.path.exists('config.json'):
         os.remove('config.json')
     auth = input("Config file created. Please provide authorization: ")
@@ -66,6 +68,8 @@ def create_config(str):
         json.dump(data, config)
     if str == "menu":
         os.system("py main.py")
+    else:
+        print("No additional information provided!")
         
         
 if __name__ == '__main__':
